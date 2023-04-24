@@ -20,7 +20,9 @@ message NeonItem {
 
 message DeluxItem {
     string id = 1;
-    string name = 2;
-    int32 balance = 3;
-    int32 price = 4;
+    string category = 2;
+    string variant = 3;
+    string name = 4;
+    int32 balance = 5;
+    int32 price = 6;
 }
