@@ -34,3 +34,35 @@ export async function getNeonAssortment() {
     []
   );
 }
+
+export async function getDeluxAssortment() {
+  const deluxFilter = Filter.instance().add(
+    "pathname",
+    FilterPredicate.contains,
+    Project.delux
+  );
+
+  return (await getAssortment(deluxFilter)).reduce(
+    (
+      variants: Array<{
+        id: string;
+        name: string;
+        balance: number;
+        price: number;
+      }>,
+      item: Assortment
+    ) =>
+      isVariantAssortment(item)
+        ? [
+            ...variants,
+            {
+              id: item.externalCode,
+              name: item.name,
+              balance: item.quantity,
+              price: getSalePrice(item),
+            },
+          ]
+        : variants,
+    []
+  );
+}

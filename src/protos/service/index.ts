@@ -8,6 +8,8 @@ type SubtypeConstructor<Constructor extends new (...args: any) => any, Subtype> 
 };
 
 export interface ProtoGrpcType {
+  DeluxItem: MessageTypeDefinition
+  DeluxRequest: MessageTypeDefinition
   MoySklad: SubtypeConstructor<typeof grpc.Client, _MoySkladClient> & { service: _MoySkladDefinition }
   NeonItem: MessageTypeDefinition
   NeonRequest: MessageTypeDefinition

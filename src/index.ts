@@ -1,7 +1,7 @@
 import { load } from "@grpc/proto-loader";
 import { config } from "dotenv";
 import { resolve } from "path";
-import { getNeonAssortment } from "./service";
+import { getNeonAssortment, getDeluxAssortment } from "./service";
 import { ProtoGrpcType } from "./protos/service";
 import { MoySkladHandlers } from "./protos/service/MoySklad";
 import {
@@ -15,6 +15,13 @@ config();
 const handlers: MoySkladHandlers = {
   async getNeonAssortment(call) {
     const assortment = await getNeonAssortment();
+
+    assortment.forEach((item) => call.write(item));
+
+    call.end();
+  },
+  async getDeluxAssortment(call) {
+    const assortment = await getDeluxAssortment();
 
     assortment.forEach((item) => call.write(item));
 
