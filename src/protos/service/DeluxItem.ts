@@ -6,6 +6,8 @@ export interface DeluxItem {
   'category'?: (string);
   'variant'?: (string);
   'name'?: (string);
+  'unit'?: (string);
+  'code'?: (string);
   'balance'?: (number);
   'price'?: (number);
 }
@@ -15,6 +17,8 @@ export interface DeluxItem__Output {
   'category'?: (string);
   'variant'?: (string);
   'name'?: (string);
+  'unit'?: (string);
+  'code'?: (string);
   'balance'?: (number);
   'price'?: (number);
 }

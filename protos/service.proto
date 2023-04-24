@@ -23,6 +23,8 @@ message DeluxItem {
     string category = 2;
     string variant = 3;
     string name = 4;
-    int32 balance = 5;
-    int32 price = 6;
+    string unit = 5;
+    string code = 6;
+    int32 balance = 7;
+    int32 price = 8;
 }

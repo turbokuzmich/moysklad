@@ -69,8 +69,12 @@ export async function getDeluxAssortment() {
 
       const product = products[variant.product.meta.href];
       const value = first(variant.characteristics)?.value;
+      const unit = first(variant.characteristics)?.name;
+      const code = first(variant.characteristics)?.id;
 
       return {
+        unit,
+        code,
         id: variant.externalCode,
         category: product.externalCode,
         variant: value,
