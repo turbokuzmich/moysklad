@@ -25,6 +25,9 @@ message DeluxItem {
     string name = 4;
     string unit = 5;
     string code = 6;
-    int32 balance = 7;
-    int32 price = 8;
+    string itemHref = 7;
+    string itemName = 8;
+    string href = 9;
+    int32 balance = 10;
+    int32 price = 11;
 }

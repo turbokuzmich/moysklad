@@ -39,9 +39,13 @@ async function main() {
   server.bindAsync(
     `${process.env.ADDRESS as string}:${process.env.PORT as string}`,
     ServerCredentials.createInsecure(),
-    function (_, port) {
-      server.start();
-      console.log("started at", port);
+    function (error, port) {
+      if (error) {
+        console.log(error);
+      } else {
+        server.start();
+        console.log("started at", port);
+      }
     }
   );
 }

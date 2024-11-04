@@ -8,6 +8,9 @@ export interface DeluxItem {
   'name'?: (string);
   'unit'?: (string);
   'code'?: (string);
+  'itemHref'?: (string);
+  'itemName'?: (string);
+  'href'?: (string);
   'balance'?: (number);
   'price'?: (number);
 }
@@ -19,6 +22,9 @@ export interface DeluxItem__Output {
   'name'?: (string);
   'unit'?: (string);
   'code'?: (string);
+  'itemHref'?: (string);
+  'itemName'?: (string);
+  'href'?: (string);
   'balance'?: (number);
   'price'?: (number);
 }

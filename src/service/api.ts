@@ -4,21 +4,23 @@ import type { TokenResponse } from "./types";
 
 type ApiResolver = (api: AxiosInstance) => void;
 
-let isReady = false;
+let status = "initial"; // authorizing | ready
 
 let api: AxiosInstance;
 let requests: ApiResolver[] = [];
 
 export default async function getApi(): Promise<AxiosInstance> {
-  if (isReady) {
+  if (status === "ready") {
     return Promise.resolve(api);
   }
 
-  if (requests.length > 0) {
+  if (status === "authorizing") {
     return new Promise((resolve: ApiResolver) => {
       requests.push(resolve);
     });
   }
+
+  status = "authorizing";
 
   const unauthorizedApi = axios.create({
     baseURL: process.env.API_URL,
@@ -42,6 +44,8 @@ export default async function getApi(): Promise<AxiosInstance> {
   unauthorizedApi.defaults.headers.common.Authorization = `Bearer ${access_token}`;
 
   api = unauthorizedApi;
+
+  status = "ready";
 
   requests.forEach((resolver) => resolver(api));
   requests = [];

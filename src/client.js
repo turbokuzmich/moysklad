@@ -11,13 +11,13 @@ async function main() {
     credentials.createInsecure()
   );
 
-  const call = client.getNeonAssortment();
+  const call = client.getDeluxAssortment();
 
   call.on("metadata", function (meta) {
     console.log("metadata", new Date(meta.get("date")[0]));
   });
   call.on("data", function (feature) {
-    // console.log(feature);
+    console.log(feature);
   });
   call.on("end", function () {
     console.log("end");
